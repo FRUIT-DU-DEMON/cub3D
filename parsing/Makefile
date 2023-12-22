@@ -6,12 +6,12 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 18:22:58 by hlabouit          #+#    #+#              #
-#    Updated: 2023/12/19 18:24:53 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/12/22 20:41:57 by hlabouit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = parsing
-CFILES = main.c
+CFILES = main.c libft_.c libft__.c display_errors.c
 COFILES = $(CFILES:%.c=%.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
