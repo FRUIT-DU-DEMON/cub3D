@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_errors.c                                   :+:      :+:    :+:   */
+/*   check_map_errors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/02 03:23:11 by hlabouit         ###   ########.fr       */
+/*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
+/*   Updated: 2024/01/02 04:46:02 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"parsing.h"
 
-void	display_errors(int signal)
+void	check_map_extension(char **av)
 {
-	if (signal == 101)
-	{
-		printf("Error\ninvalid map file extension!\n");
-		exit(EXIT_FAILURE);
-	}
-	if (signal == 202)
-	{
-		printf("Error\nmap.cub file is empty!\n");
-		exit(EXIT_FAILURE);
-	}
-	if (signal == 303)
-	{
-		printf("Error\ninvalid number of arguments!\n");
-		exit(EXIT_FAILURE);
-	}
-	if (signal == 404)
-	{
-		printf("Error\nfailed to open map.cub file!\n");
-		exit(EXIT_FAILURE);
-	}
+	int j;
+
+	j = 0;
+	while (av[1][j])
+		j++;
+	if (av[1][j - 1] == 'b' && av[1][j - 2] == 'u' && av[1][j - 3] == 'c' && av[1][j - 4] == '.')
+		return;
+	else
+		display_errors(101);
 }
+

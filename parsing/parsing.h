@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/12/22 20:57:17 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/02 04:45:45 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <fcntl.h>
 
 
+char	**join_map_code(int fd);
+void	check_map_extension(char **av);
+void	display_errors(int signal);
+
 ///////// libft //////////
 int		ft_strlen_prs(char *s);
 size_t	ft_strlcpy_prs(char *dst, char *src, size_t dstsize);
@@ -30,8 +34,5 @@ char	**ft_split_prs(char *s, char c);
 char	*ft_strdup_prs(char *s1);
 ///////// libft //////////
 
-
-
-void	display_errors(int signal);
 
 #endif
