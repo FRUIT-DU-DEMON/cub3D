@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/02 03:23:11 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/04 00:35:42 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	display_errors(int signal)
 	}
 	if (signal == 202)
 	{
-		printf("Error\nmap.cub file is empty!\n");
+		printf("Error\nmap file is empty!\n");
 		exit(EXIT_FAILURE);
 	}
 	if (signal == 303)
@@ -31,7 +31,21 @@ void	display_errors(int signal)
 	}
 	if (signal == 404)
 	{
-		printf("Error\nfailed to open map.cub file!\n");
+		printf("Error\nfailed to open map file!\n");
+		exit(EXIT_FAILURE);
+	}
+	if (signal == 505)
+	{
+		printf("Error\ninvalid map characters!\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	display_errors2(int signal)
+{
+	if (signal == 606)
+	{
+		printf("Error\nmap must countain one single start position!\n");
 		exit(EXIT_FAILURE);
 	}
 }
