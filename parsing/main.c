@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:20:11 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/02 20:29:54 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/05 03:45:44 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int main(int ac, char **av)
 		display_errors(404);
 	char **mc = join_map_code(fd);
 	check_map_characters(mc);
-	while (*mc)
-		printf("%s\n", *mc++);
+	check_map_wall(mc);
+	printf("CLEEANNN MAP\n");
+	// while (*mc)
+	// 	printf("%s\n", *mc++);
 }
