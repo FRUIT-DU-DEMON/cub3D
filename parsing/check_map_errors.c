@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/05 21:02:15 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/06 04:52:23 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,83 +27,125 @@ void	check_map_extension(char **av)
 
 void	check_map_characters(char **map_code)
 {
-	int	i;
-	int	j;
-	int	flag;
+	t_dimention dmt;
 
-	flag = 0;
-	i = 0;
-	while (map_code[i])
+	dmt.flag = 0;
+	dmt.i = 0;
+	while (map_code[dmt.i])
 	{
-		j = 0;
-		while (map_code[i][j])
+		dmt.j = 0;
+		while (map_code[dmt.i][dmt.j])
 		{
-			if (map_code[i][j] != '0' && map_code[i][j] != '1'
-				&& map_code[i][j] != 'N' && map_code[i][j] != 'S'
-				&& map_code[i][j] != 'E' && map_code[i][j] != 'W'
-				&& map_code[i][j] != ' ')
+			if (map_code[dmt.i][dmt.j] != '0' && map_code[dmt.i][dmt.j] != '1'
+				&& map_code[dmt.i][dmt.j] != 'N' && map_code[dmt.i][dmt.j] != 'S'
+				&& map_code[dmt.i][dmt.j] != 'E' && map_code[dmt.i][dmt.j] != 'W'
+				&& map_code[dmt.i][dmt.j] != ' ')
 					display_errors(505);
-			if (map_code[i][j] =='N' || map_code[i][j] =='S'
-				|| map_code[i][j] =='E' || map_code[i][j] =='W')
-				flag++;
-			j++;
+			if (map_code[dmt.i][dmt.j] =='N' || map_code[dmt.i][dmt.j] =='S'
+				|| map_code[dmt.i][dmt.j] =='E' || map_code[dmt.i][dmt.j] =='W')
+				dmt.flag++;
+			dmt.j++;
 		}
-		i++;
+		dmt.i++;
 	}
-	if (flag != 1)
+	if (dmt.flag != 1)
 		display_errors2(606);
 }
 
-char get_start_point(char **map_code)
-{
-	int	i;
-	int	j;
-	char start_point;
+// char get_start_point(char **map_code)
+// {
+// 	int	i;
+// 	int	j;
+// 	char start_point;
 
-	i = 0;
-	while (map_code[i])
+// 	i = 0;
+// 	while (map_code[i])
+// 	{
+// 		j = 0;
+// 		while (map_code[i][j])
+// 		{
+// 			if (map_code[i][j] == 'N' || map_code[i][j] == 'S'
+// 				|| map_code[i][j] == 'E' || map_code[i][j] == 'W')
+// 			{
+// 				start_point = map_code[i][j]; 
+// 				return (start_point);
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
+
+t_dimention	get_mc_dimentios(char **map_code)
+{
+	t_dimention dmt;
+
+	dmt.i = 0;
+	dmt.longest_line = 0;
+	while (map_code[dmt.i])
 	{
-		j = 0;
-		while (map_code[i][j])
-		{
-			if (map_code[i][j] == 'N' || map_code[i][j] == 'S'
-				|| map_code[i][j] == 'E' || map_code[i][j] == 'W')
-			{
-				start_point = map_code[i][j]; 
-				return (start_point);
-			}
-			j++;
-		}
-		i++;
+		dmt.j = 0;
+		while (map_code[dmt.i][dmt.j])
+			dmt.j++;
+		if (dmt.j > dmt.longest_line)
+			dmt.longest_line = dmt.j;
+		dmt.i++;
 	}
-	return (0);
+	dmt.lines = dmt.i;
+	return (dmt);
 }
 
+char	**create_virtual_map(char **map_code)
+{
+	t_dimention dmt;
+	char **virtual_map;
+	
+	dmt.i = 0;
+	dmt = get_mc_dimentios(map_code);
+	virtual_map = malloc((dmt.lines + 1) * sizeof(char *));
+	virtual_map[dmt.lines] = NULL;
+	dmt.lines--;
+	while (dmt.lines >= 0)
+	{
+		virtual_map[dmt.lines] = malloc((dmt.longest_line + 1) * sizeof(char));
+		dmt.lines--;
+	}
+	while (map_code[++dmt.i])
+	{
+		dmt.j = -1;
+		while (map_code[dmt.i][++dmt.j])
+			virtual_map[dmt.i][dmt.j] = map_code[dmt.i][dmt.j];
+		virtual_map[dmt.i][dmt.j] = '\0';
+	}
+	
+	// while (*virtual_map)
+	// 	printf("%s\n", *virtual_map++);
+	exit(0);
+	return (virtual_map);
+}
 
 void	check_map_wall(char **map_code)
 {
-	int	i;
-	int	j;
-	int	flag;
-	char start_point;
+	t_dimention dmt;
 
-	flag = 0;
-	i = 0;
-	start_point = get_start_point(map_code);
-	while (map_code[i])
+	dmt = get_mc_dimentios(map_code);
+	dmt.flag = 0;
+	dmt.i = 1;
+	// printf("%d\n", dmt.longest_line);
+	// exit(0);
+	while (map_code[dmt.i])
 	{
-		j = 0;
-		while (map_code[i][j])
+		dmt.j = 0;
+		while (map_code[dmt.i][dmt.j])
 		{
-			if (map_code[i][j] == '0' && (map_code[i + 1][j] == ' ' || map_code[i - 1][j] == ' '
-				|| map_code[i][j + 1] == ' ' || map_code[i][j - 1] == ' '))
-			{
-				printf("Error\nmap file isn't surrounded by walls!\n");
-				exit(EXIT_FAILURE);
-			}
-			j++;
+			if (map_code[dmt.i][dmt.j] == '0' && (map_code[dmt.i + 1][dmt.j] == ' ' || map_code[dmt.i - 1][dmt.j] == ' '
+				|| map_code[dmt.i][dmt.j + 1] == ' ' || map_code[dmt.i][dmt.j - 1] == ' '))
+					display_errors2(707);
+			dmt.j++;
 		}
-		i++;
+		dmt.i++;
 	}
 
 }

@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/04 00:35:42 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/06 02:54:06 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void	display_errors2(int signal)
 	if (signal == 606)
 	{
 		printf("Error\nmap must countain one single start position!\n");
+		exit(EXIT_FAILURE);
+	}
+	if (signal == 707)
+	{
+		printf("Error\nmap isn't surrounded by walls!\n");
 		exit(EXIT_FAILURE);
 	}
 }
