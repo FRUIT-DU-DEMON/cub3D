@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/06 04:52:23 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/06 23:40:20 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_map_characters(char **map_code)
 					display_errors(505);
 			if (map_code[dmt.i][dmt.j] =='N' || map_code[dmt.i][dmt.j] =='S'
 				|| map_code[dmt.i][dmt.j] =='E' || map_code[dmt.i][dmt.j] =='W')
-				dmt.flag++;
+					dmt.flag++;
 			dmt.j++;
 		}
 		dmt.i++;
@@ -102,8 +102,8 @@ char	**create_virtual_map(char **map_code)
 	t_dimention dmt;
 	char **virtual_map;
 	
-	dmt.i = 0;
 	dmt = get_mc_dimentios(map_code);
+	dmt.i = 0;
 	virtual_map = malloc((dmt.lines + 1) * sizeof(char *));
 	virtual_map[dmt.lines] = NULL;
 	dmt.lines--;
@@ -112,17 +112,25 @@ char	**create_virtual_map(char **map_code)
 		virtual_map[dmt.lines] = malloc((dmt.longest_line + 1) * sizeof(char));
 		dmt.lines--;
 	}
-	while (map_code[++dmt.i])
+	while (map_code[dmt.i])
 	{
-		dmt.j = -1;
-		while (map_code[dmt.i][++dmt.j])
+		dmt.j = 0;
+		while (map_code[dmt.i][dmt.j])
+		{
 			virtual_map[dmt.i][dmt.j] = map_code[dmt.i][dmt.j];
-		virtual_map[dmt.i][dmt.j] = '\0';
+			dmt.j++;
+		}
+		virtual_map[dmt.i][dmt.longest_line] = '\0';
+		while (dmt.j < dmt.longest_line)
+		{
+			virtual_map[dmt.i][dmt.j] = ' ';
+			dmt.j++;
+		}
+		dmt.i++;
 	}
-	
-	// while (*virtual_map)
-	// 	printf("%s\n", *virtual_map++);
-	exit(0);
+	while (*virtual_map)//vmap
+		printf("[%s]\n", *virtual_map++);
+	// exit(0);
 	return (virtual_map);
 }
 
@@ -133,8 +141,6 @@ void	check_map_wall(char **map_code)
 	dmt = get_mc_dimentios(map_code);
 	dmt.flag = 0;
 	dmt.i = 1;
-	// printf("%d\n", dmt.longest_line);
-	// exit(0);
 	while (map_code[dmt.i])
 	{
 		dmt.j = 0;
