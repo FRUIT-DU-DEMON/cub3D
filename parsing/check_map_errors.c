@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/06 23:40:20 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/07 04:51:57 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,26 +128,40 @@ char	**create_virtual_map(char **map_code)
 		}
 		dmt.i++;
 	}
-	while (*virtual_map)//vmap
-		printf("[%s]\n", *virtual_map++);
+	// while (*virtual_map)//vmap
+	// 	printf("[%s]\n", *virtual_map++);
 	// exit(0);
 	return (virtual_map);
 }
 
-void	check_map_wall(char **map_code)
+void	check_map_updown_sides(char **map_code)
 {
 	t_dimention dmt;
 
 	dmt = get_mc_dimentios(map_code);
-	dmt.flag = 0;
-	dmt.i = 1;
-	while (map_code[dmt.i])
+	dmt.j = 0;
+	while (dmt.j < dmt.longest_line)
+	{
+		if (map_code[0][dmt.j] != '1' && map_code[0][dmt.j] != ' ' && map_code[dmt.lines][dmt.j] != '1' && map_code[dmt.lines][dmt.j] != ' ')//segfault HEERREE
+				display_errors2(707);
+		dmt.j++;
+	}
+}
+
+
+void	check_map_wall(char **virtual_map)
+{
+	t_dimention dmt;
+
+	dmt = get_mc_dimentios(virtual_map);
+	dmt.i = 0;
+	while (virtual_map[dmt.i])
 	{
 		dmt.j = 0;
-		while (map_code[dmt.i][dmt.j])
+		while (virtual_map[dmt.i][dmt.j])
 		{
-			if (map_code[dmt.i][dmt.j] == '0' && (map_code[dmt.i + 1][dmt.j] == ' ' || map_code[dmt.i - 1][dmt.j] == ' '
-				|| map_code[dmt.i][dmt.j + 1] == ' ' || map_code[dmt.i][dmt.j - 1] == ' '))
+			if (virtual_map[dmt.i][dmt.j] == '0' && (virtual_map[dmt.i + 1][dmt.j] == ' ' || virtual_map[dmt.i - 1][dmt.j] == ' '
+				|| virtual_map[dmt.i][dmt.j + 1] == ' ' || virtual_map[dmt.i][dmt.j - 1] == ' '))
 					display_errors2(707);
 			dmt.j++;
 		}
