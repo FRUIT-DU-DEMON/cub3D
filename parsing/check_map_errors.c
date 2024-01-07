@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/07 18:32:50 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/07 20:00:42 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,30 +52,30 @@ void	check_map_characters(char **map_code)
 		display_errors2(606);
 }
 
-// char get_start_point(char **map_code)
-// {
-// 	int	i;
-// 	int	j;
-// 	char start_point;
+char get_start_point(char **map_code)
+{
+	int	i;
+	int	j;
+	char start_point;
 
-// 	i = 0;
-// 	while (map_code[i])
-// 	{
-// 		j = 0;
-// 		while (map_code[i][j])
-// 		{
-// 			if (map_code[i][j] == 'N' || map_code[i][j] == 'S'
-// 				|| map_code[i][j] == 'E' || map_code[i][j] == 'W')
-// 			{
-// 				start_point = map_code[i][j]; 
-// 				return (start_point);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	i = 0;
+	while (map_code[i])
+	{
+		j = 0;
+		while (map_code[i][j])
+		{
+			if (map_code[i][j] == 'N' || map_code[i][j] == 'S'
+				|| map_code[i][j] == 'E' || map_code[i][j] == 'W')
+			{
+				start_point = map_code[i][j]; 
+				return (start_point);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 
 t_dimention	get_mc_dimentios(char **map_code)
@@ -139,25 +139,24 @@ void	check_map_updown_sides(char **virtual_map)
 	t_dimention dmt;
 
 	dmt = get_mc_dimentios(virtual_map);
-	dmt.j = 0;
 	dmt.i = 0;
-	while (dmt.j < dmt.longest_line)
+	while (dmt.i < dmt.lines)
 	{
-		if ((virtual_map[0][dmt.j] != '1' && virtual_map[0][dmt.j] != ' ')
-			|| (virtual_map[dmt.lines - 1][dmt.j] != '1'
-				&& virtual_map[dmt.lines - 1][dmt.j] != ' '))
+		if ((virtual_map[dmt.i][0] != '1' && virtual_map[dmt.i][0] != ' ')
+			|| (virtual_map[dmt.i][dmt.longest_line - 1] != '1'
+				&& virtual_map[dmt.i][dmt.longest_line - 1] != ' '))
 					display_errors2(707);
-		dmt.j++;
-	}
-	dmt.j = 0;
-	while (virtual_map[dmt.i])
-	{
-		while (virtual_map[dmt.i][dmt.j] == ' ')
+		dmt.j = 0;
+		while (dmt.j < dmt.longest_line)
+		{
+			if ((virtual_map[0][dmt.j] != '1' && virtual_map[0][dmt.j] != ' ')
+				|| (virtual_map[dmt.lines - 1][dmt.j] != '1'
+					&& virtual_map[dmt.lines - 1][dmt.j] != ' '))
+						display_errors2(707);
 			dmt.j++;
-		//should check onn first and last char which is gonna always be space or '\0'
+		}
+		dmt.i++;
 	}
-	
-	
 }
 
 
@@ -172,7 +171,7 @@ void	check_map_wall(char **virtual_map)
 		dmt.j = 0;
 		while (virtual_map[dmt.i][dmt.j])
 		{
-			if (virtual_map[dmt.i][dmt.j] == '0' && (virtual_map[dmt.i + 1][dmt.j] == ' ' || virtual_map[dmt.i - 1][dmt.j] == ' '
+			if ((virtual_map[dmt.i][dmt.j] == '0' || virtual_map[dmt.i][dmt.j] == get_start_point(virtual_map)) && (virtual_map[dmt.i + 1][dmt.j] == ' ' || virtual_map[dmt.i - 1][dmt.j] == ' '
 				|| virtual_map[dmt.i][dmt.j + 1] == ' ' || virtual_map[dmt.i][dmt.j - 1] == ' '))
 					display_errors2(707);
 			dmt.j++;
