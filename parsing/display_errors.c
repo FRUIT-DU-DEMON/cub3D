@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/09 03:11:33 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:31:59 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,12 @@ void	display_errors2(int signal)
 	}
 	if (signal == 909)
 	{
-		printf("Error\nmap countains more than one element of each texture!\n");
+		printf("Error\nmap countains more than one path or color of each element!\n");
+		exit(EXIT_FAILURE);
+	}
+	if (signal == 1101)
+	{
+		printf("Error\ninvalid map elemnts!\n");
 		exit(EXIT_FAILURE);
 	}
 }
