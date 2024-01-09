@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/08 04:25:04 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/09 04:51:22 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct t_elements
 	char *ea_path;
 	char *ceiling_color;
 	char *floor_color;
+	char *tmp;
 	int		index;
-	int		flag;
 }t_elements;
 
 typedef struct t_dimention

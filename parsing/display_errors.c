@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/06 23:52:30 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/09 03:11:33 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	display_errors2(int signal)
 {
 	if (signal == 606)
 	{
-		printf("Error\nmap must countain one single start position!\n");
+		printf("Error\nmap countains more than one start position!\n");
 		exit(EXIT_FAILURE);
 	}
 	if (signal == 707)
@@ -56,6 +56,11 @@ void	display_errors2(int signal)
 	if (signal == 808)
 	{
 		printf("Error\nmap countains empty lines!\n");
+		exit(EXIT_FAILURE);
+	}
+	if (signal == 909)
+	{
+		printf("Error\nmap countains more than one element of each texture!\n");
 		exit(EXIT_FAILURE);
 	}
 }
