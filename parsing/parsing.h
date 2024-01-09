@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/09 16:21:20 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:37:53 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,17 @@ typedef struct t_dimention
 
 char		**join_map_code(int fd);
 void		check_map_extension(char **av);
-void		check_map_characters(char **map_code);
+void		check_map_characters(char **map_code, t_dimention dmt);
 void		check_map_wall(char **virtual_map);
 void		check_map_4sides_wall(char **virtual_map);
 char		get_start_point(char **map_code);
 t_dimention	get_mc_dimentios(char **map_code);
 char		**create_virtual_map(char **map_code);
-void    check_map_elements(char **map_code);
+t_dimention    check_map_elements(char **map_code);
 void set_element_data(char *texture_path, t_elements *elmt, char identifier);
 void		display_errors(int signal);
 void		display_errors2(int signal);
+void	display_errors3(int signal);
 
 ///////// libft //////////
 int		ft_strlen_prs(char *s);

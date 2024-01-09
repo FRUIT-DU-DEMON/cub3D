@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/08 01:05:38 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:44:54 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	check_map_extension(char **av)
 		display_errors(101);
 }
 
-void	check_map_characters(char **map_code)
+void	check_map_characters(char **map_code, t_dimention dmt)
 {
-	t_dimention dmt;
-
-	dmt.flag = 0;
-	dmt.i = 0;
+	// dmt.flag = 0;
+	// dmt.i = 0;
+	// if(dmt.i < 6)
+	// 	display_errors3(479);
 	while (map_code[dmt.i])
 	{
 		dmt.j = 0;

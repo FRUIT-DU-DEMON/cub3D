@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/09 16:31:59 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:38:24 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,13 @@ void	display_errors2(int signal)
 		printf("Error\ninvalid map elemnts!\n");
 		exit(EXIT_FAILURE);
 	}
+}
+void	display_errors3(int signal)
+{
+	if (signal == 479)
+	{
+		printf("Error\nmap code must be the last in .cub file!\n");
+		exit(EXIT_FAILURE);
+	}
+	
 }
