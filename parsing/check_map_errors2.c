@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/09 16:55:56 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:01:01 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,30 +106,15 @@ void    check_map_elements(char **map_code)
             {
                 which_element(&elmt, &dmt, 2);
                 set_element_data(elmt.tmp, &elmt, identifier);
-                // printf("[%s]\n", elmt.ea_path);
-                // exit(0);
             }
             else if (elmt.tmp[dmt.j + 1] == ' ')
             {
                 which_element(&elmt, &dmt, 1);
                 set_element_data(elmt.tmp, &elmt, identifier);
-                // printf("[%s]\n", elmt.ea_path);
-                // exit(0);
             }
-            // else if (elmt.tmp[dmt.j + 1] == ' ')
-            // {
-                
-            // }
         }
         else
             display_errors2(1101);
         dmt.i++;
     }
-    printf("[%s]\n", elmt.no_path);
-    printf("[%s]\n", elmt.so_path);
-    printf("[%s]\n", elmt.we_path);
-    printf("[%s]\n", elmt.ea_path);
-    printf("[%s]\n", elmt.floor_color);
-    printf("[%s]\n", elmt.ceiling_color);
-    exit(0);
 }
