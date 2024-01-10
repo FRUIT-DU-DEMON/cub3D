@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/09 20:42:02 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/10 04:57:05 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void which_element(t_elements *elmt, t_dimention *dmt, int space_index)
 }
 
 
-t_dimention    check_map_elements(char **map_code)
+t_elements  check_map_elements(char **map_code)
 {
     t_dimention dmt;
     t_elements elmt;
@@ -90,7 +90,14 @@ t_dimention    check_map_elements(char **map_code)
     dmt.j = 0;
     while (map_code[dmt.i])
     {
+        dmt.j = 0;
         elmt.tmp = map_code[dmt.i];
+        while(elmt.tmp[dmt.j])
+        {
+            if (elmt.tmp[dmt.j] == get_start_point(map_code) && (elmt.tmp[dmt.j + 1] == '1' || elmt.tmp[dmt.j + 1] == '0')) //Must check here if one of ptrs is NULL
+                display_errors3(479);
+            dmt.j++;
+        }
         dmt.j = 0;
         while (elmt.tmp[dmt.j] == ' ')
             dmt.j++;
@@ -115,13 +122,7 @@ t_dimention    check_map_elements(char **map_code)
         }
         dmt.i++;
     }
-    if (!elmt.no_path || !elmt.so_path || !elmt.we_path
-        || !elmt.ea_path || !elmt.floor_color || !elmt.ceiling_color)
-            display_errors2(1101);
-    // if (elmt.no_path && elmt.so_path && elmt.we_path
-    //     && elmt.ea_path && elmt.floor_color && elmt.ceiling_color && dmt.i < 6)
-    //         display_errors2(479);
-    return(dmt);
+    return(elmt);
     // printf("[%s]\n", elmt.no_path);
     // printf("[%s]\n", elmt.so_path);
     // printf("[%s]\n", elmt.we_path);

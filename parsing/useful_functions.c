@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:24:48 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/07 22:42:57 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/10 04:52:03 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ char get_start_point(char **map_code)
 		j = 0;
 		while (map_code[i][j])
 		{
-			if (map_code[i][j] == 'N' || map_code[i][j] == 'S'
-				|| map_code[i][j] == 'E' || map_code[i][j] == 'W')
+			if ((map_code[i][j] == 'N' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))
+				|| (map_code[i][j] == 'S' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))
+				|| (map_code[i][j] == 'W' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))
+				|| (map_code[i][j] == 'E' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))) 
 			{
 				start_point = map_code[i][j]; 
 				return (start_point);

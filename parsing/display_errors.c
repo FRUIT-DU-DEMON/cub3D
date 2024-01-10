@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/09 20:38:24 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/10 02:07:17 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	display_errors2(int signal)
 	}
 	if (signal == 1101)
 	{
-		printf("Error\ninvalid map elemnts!\n");
+		printf("Error\ninvalid elemnts or their position in the map!\n");
 		exit(EXIT_FAILURE);
 	}
 }
