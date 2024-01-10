@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/10 02:21:39 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:30:12 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ void	check_map_characters(char **map_code)
 	
 	dmt.flag = 0;
 	dmt.i = 0;
-	// if (!elmt.no_path || !elmt.so_path || !elmt.we_path || !elmt.ea_path
-	// 	|| !elmt.floor_color || !elmt.ceiling_color)
-	// 		display_errors2(1101);
 	while (map_code[dmt.i])
 	{
 		dmt.j = 0;

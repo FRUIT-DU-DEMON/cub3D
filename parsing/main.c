@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:20:11 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/10 04:55:34 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:45:14 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int main(int ac, char **av)
 		display_errors(404);
 	map_code = join_map_code(fd);
 	virtual_map = create_virtual_map(map_code);
-	parsing(map_code, virtual_map);
+	// parsing(map_code, virtual_map);
+	check_map_elements(map_code);
 	// printf("\n---------------------------------------------------------------------\n");
 	// while (*map_code)//map
 	// 	printf("[%s]\n", *map_code++);
