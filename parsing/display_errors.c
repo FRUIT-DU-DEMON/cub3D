@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/10 02:07:17 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/10 23:08:19 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	display_errors3(int signal)
 {
 	if (signal == 479)
 	{
-		printf("Error\nmap code must be the last in .cub file!\n");
+		printf("Error\nmap elements must be the first in .cub file!\n");
 		exit(EXIT_FAILURE);
 	}
 	

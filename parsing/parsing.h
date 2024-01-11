@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/10 02:22:46 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/11 01:01:58 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct t_dimention
 	int		longest_line;
 	int		i;
 	int		j;
+	int index;
 	int		flag;
 }t_dimention;
 
@@ -51,7 +52,7 @@ char		get_start_point(char **map_code);
 t_dimention	get_mc_dimentios(char **map_code);
 char		**create_virtual_map(char **map_code);
 void	set_element_data(char *texture_path, t_elements *elmt, char identifier);
-void	which_element(t_elements *elmt, t_dimention *dmt, int space_index);
+void	pointer_plus_index(t_elements *elmt, t_dimention *dmt, int space_index);
 t_elements    check_map_elements(char **map_code);
 void parsing(char **map_code, char **virtual_map);
 void		display_errors(int signal);
