@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:24:48 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 02:11:59 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:31:02 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ t_dimention	get_mc_dimentios(char **map_code)
 		dmt.i++;
 	}
 	dmt.lines = dmt.i;
+	// printf("---------------[%d]------------\n", dmt.lines);
 	return (dmt);
 }
 

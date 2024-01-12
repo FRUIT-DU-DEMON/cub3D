@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 03:22:47 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:16:45 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ t_dimention  check_map_elements(char **map_code)
     dmt = get_mc_dimentios(map_code);
     elmt.tmp = NULL;
     dmt.i = 0;
-    dmt.j = 0;
-    dmt.flag = 0;
     while (map_code[dmt.i])
     {
         elmt.tmp = map_code[dmt.i];
@@ -123,29 +121,23 @@ t_dimention  check_map_elements(char **map_code)
             display_errors3(479);
         if (check_pointer_state(&elmt) == 1)
         {
-                printf("%d\n", dmt.i);
-                printf("[%c]\n", map_code[dmt.i][0]);
+            //move to next line where all empty lines skipped and remmoved in split 
+            dmt.j = 0;
             dmt.i++;
-                printf("%d\n", dmt.i);
-                printf("[%c]\n", map_code[dmt.i][0]);
-            // while (map_code[dmt.i][0] == '\n')
-            // {
-            //     dmt.i++;
-            //     printf("[%c]\n", map_code[dmt.i][0]);
-            // }
-            exit(0);
+            // printf("bachkharej%d\n", dmt.i);
+            // exit(0);
             return (dmt);
         }
         dmt.i++;
     }
     if (check_pointer_state(&elmt) == -1)
         display_errors3(777);
-    printf("[%s]\n", elmt.no_path);
-    printf("[%s]\n", elmt.so_path);
-    printf("[%s]\n", elmt.we_path);
-    printf("[%s]\n", elmt.ea_path);
-    printf("[%s]\n", elmt.floor_color);
-    printf("[%s]\n", elmt.ceiling_color);
-    exit(0);
+    // printf("[%s]\n", elmt.no_path);
+    // printf("[%s]\n", elmt.so_path);
+    // printf("[%s]\n", elmt.we_path);
+    // printf("[%s]\n", elmt.ea_path);
+    // printf("[%s]\n", elmt.floor_color);
+    // printf("[%s]\n", elmt.ceiling_color);
+    // exit(0);
     return(dmt);
 }
