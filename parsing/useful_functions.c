@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:24:48 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/10 04:52:03 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/12 02:11:59 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ char	**join_map_code(int fd)
 		mc_1d = ft_strjoin_prs(mc_1d, buf);
 		i = read(fd, buf, 1);
 		buf[i] = 0;
-		if (mc_1d[0] == '\n'
-			|| (mc_1d[ft_strlen_prs(mc_1d) - 1] == '\n' && buf[0] == '\n'))
-			display_errors2(808);
+		// if (mc_1d[0] == '\n'
+		// 	|| (mc_1d[ft_strlen_prs(mc_1d) - 1] == '\n' && buf[0] == '\n'))
+		// 	display_errors2(808);
 	}
 	if (mc_1d[ft_strlen_prs(mc_1d) - 1] == '\n')
 		display_errors2(808);

@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/11 04:57:11 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/12 03:22:47 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,12 @@ int check_for_each_element(char *map_code, t_dimention *dmt)
         || (map_code[dmt->j] == 'F' && map_code[dmt->j + 1] == ' ')
         || (map_code[dmt->j] == 'C' && map_code[dmt->j + 1] == ' '))
             return (0);
-    else if (map_code[0] == '\0')
+    else if (map_code[0] != '\0')
         return(1);
-    else
-        return (2);
     return (-1);
 }
 
-t_elements  check_map_elements(char **map_code)
+t_dimention  check_map_elements(char **map_code)
 {
     t_dimention dmt;
     t_elements elmt;
@@ -121,27 +119,33 @@ t_elements  check_map_elements(char **map_code)
                 set_element_data(elmt.tmp, &elmt, identifier);
             }
         }
-        else if (check_for_each_element(elmt.tmp, &dmt) == 2 && check_pointer_state(&elmt) == -1)
-            display_errors3(479);
         else if (check_for_each_element(elmt.tmp, &dmt) == 1)
-        {
-            dmt.flag = 1;
-            dmt.i++;
-        }
-        else
             display_errors3(479);
-        if (dmt.flag == 1)
-            dmt.i--;
+        if (check_pointer_state(&elmt) == 1)
+        {
+                printf("%d\n", dmt.i);
+                printf("[%c]\n", map_code[dmt.i][0]);
+            dmt.i++;
+                printf("%d\n", dmt.i);
+                printf("[%c]\n", map_code[dmt.i][0]);
+            // while (map_code[dmt.i][0] == '\n')
+            // {
+            //     dmt.i++;
+            //     printf("[%c]\n", map_code[dmt.i][0]);
+            // }
+            exit(0);
+            return (dmt);
+        }
         dmt.i++;
-        //check for empty lines and when to increment in map_code!!
-        // else if (check_for_each_element(elmt.tmp, &dmt) == 1)
     }
+    if (check_pointer_state(&elmt) == -1)
+        display_errors3(777);
     printf("[%s]\n", elmt.no_path);
     printf("[%s]\n", elmt.so_path);
     printf("[%s]\n", elmt.we_path);
     printf("[%s]\n", elmt.ea_path);
     printf("[%s]\n", elmt.floor_color);
     printf("[%s]\n", elmt.ceiling_color);
-    // exit(0);
-    return(elmt);
+    exit(0);
+    return(dmt);
 }
