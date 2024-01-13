@@ -6,13 +6,13 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 18:22:58 by hlabouit          #+#    #+#              #
-#    Updated: 2024/01/12 21:46:39 by hlabouit         ###   ########.fr        #
+#    Updated: 2024/01/13 04:50:12 by hlabouit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = parsing
 CFILES = main.c check_map_errors.c check_map_errors2.c useful_functions.c \
-		display_errors.c libft_functions.c libft_functions2.c
+		display_errors.c libft_functions.c libft_functions2.c libft_functions3.c
 COFILES = $(CFILES:%.c=%.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g

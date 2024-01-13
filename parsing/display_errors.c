@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 02:24:48 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/13 03:58:45 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	display_errors2(int signal)
 	}
 	if (signal == 1101)
 	{
-		printf("Error\ninvalid elemnts or their position in the map!\n");
+		printf("Error\ninvalid elemnts!\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -79,6 +79,11 @@ void	display_errors3(int signal)
 	if (signal == 777)
 	{
 		printf("Error\none of the elements is missing!\n");
+		exit(EXIT_FAILURE);
+	}
+	if (signal == 666)
+	{
+		printf("Error\nfloor and ceiling colors range must be in this form : [0,255],[0,255],[0,255]!\n");
 		exit(EXIT_FAILURE);
 	}
 	

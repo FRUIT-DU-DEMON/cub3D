@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 23:18:16 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/13 03:36:22 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	check_map_characters(char **map_code, t_dimention dmt)
 {
 	
 	dmt.flag = 0;
-	// printf("[%c]\n", map_code[dmt.i][0]);
-            // exit(0);
 	while (map_code[dmt.i])
 	{
 		dmt.j = 0;

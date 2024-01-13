@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:20:11 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/13 00:48:36 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/13 02:52:58 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@
 // 	check_map_wall(virtual_map, dmt);	
 // }
 
-
 int main(int ac, char **av)
 {
-	char *mc_1d;
 	char **map_code;
+	char *mc_1d;
 	char **virtual_map;
 	int fd;
 	
@@ -38,6 +37,7 @@ int main(int ac, char **av)
 		display_errors(404);
 	mc_1d = join_map_code(fd);
 	map_code = ft_split_prs(mc_1d, '\n');
+
 	virtual_map = create_virtual_map(map_code);
 	check_map_elements(map_code, mc_1d);
 	// parsing(map_code, virtual_map);

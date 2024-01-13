@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/13 00:48:48 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/13 04:49:28 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ size_t	ft_strlcpy_prs(char *dst, char *src, size_t dstsize);
 char	*ft_strjoin_prs(char *s1, char *s2);
 char	**ft_split_prs(char *s, char c);
 char	*ft_strdup_prs(char *s1);
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
 ///////// libft //////////
 
 
