@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 17:00:36 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/13 00:48:48 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct t_dimention
 }t_dimention;
 
 
-char		**join_map_code(int fd);
+char		*join_map_code(int fd);
 void		check_map_extension(char **av);
 void		check_map_characters(char **map_code, t_dimention dmt);
 void		check_map_wall(char **virtual_map, t_dimention dmt);
@@ -53,7 +53,7 @@ t_dimention	get_mc_dimentios(char **map_code);
 char		**create_virtual_map(char **map_code);
 void	set_element_data(char *texture_path, t_elements *elmt, char identifier);
 void	pointer_plus_index(t_elements *elmt, t_dimention *dmt, int space_index);
-t_dimention    check_map_elements(char **map_code);
+t_dimention    check_map_elements(char **map_code, char *mc_1d);
 void parsing(char **map_code, char **virtual_map);
 void		display_errors(int signal);
 void		display_errors2(int signal);

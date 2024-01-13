@@ -6,24 +6,21 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:24:48 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 17:31:02 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/13 00:51:48 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"parsing.h"
 
-char	**join_map_code(int fd)
+char	*join_map_code(int fd)
 {
-	char	**map_code;
 	char	*mc_1d;
 	char	buf[2];
 	int		i;
-	int		j;
 
 	i = read(fd, buf, 1);
 	if (i == 0)
 		display_errors(202);
-	j = 0;
 	buf[i] = 0;
 	mc_1d = ft_strdup_prs("");
 	while (i)
@@ -37,8 +34,7 @@ char	**join_map_code(int fd)
 	}
 	if (mc_1d[ft_strlen_prs(mc_1d) - 1] == '\n')
 		display_errors2(808);
-	map_code = ft_split_prs(mc_1d, '\n');
-	return (free(mc_1d), map_code);
+	return (mc_1d);
 }
 
 

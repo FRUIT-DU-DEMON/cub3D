@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 17:16:45 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/13 01:22:24 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int check_for_each_element(char *map_code, t_dimention *dmt)
     return (-1);
 }
 
-t_dimention  check_map_elements(char **map_code)
+
+t_dimention  check_map_elements(char **map_code, char *mc_1d)
 {
     t_dimention dmt;
     t_elements elmt;
@@ -117,21 +118,36 @@ t_dimention  check_map_elements(char **map_code)
                 set_element_data(elmt.tmp, &elmt, identifier);
             }
         }
-        else if (check_for_each_element(elmt.tmp, &dmt) == 1)
-            display_errors3(479);
+        // else if (check_for_each_element(elmt.tmp, &dmt) == 1)
+        //     display_errors3(479);
         if (check_pointer_state(&elmt) == 1)
         {
             //move to next line where all empty lines skipped and remmoved in split 
-            dmt.j = 0;
-            dmt.i++;
+            // dmt.j = 0;
+            // dmt.i++;
             // printf("bachkharej%d\n", dmt.i);
             // exit(0);
-            return (dmt);
+            break;
+            // return (dmt);
         }
         dmt.i++;
     }
-    if (check_pointer_state(&elmt) == -1)
-        display_errors3(777);
+    dmt.j = 0;
+    while (dmt.i <= 0)
+    {
+        dmt.j += ft_strlen_prs(map_code[dmt.i]);
+        dmt.i--;
+    }
+    
+    while (mc_1d[dmt.j])
+    {
+        if (mc_1d[dmt.j] == '\n' && mc_1d[dmt.j + 1] == '\n' && check_pointer_state(&elmt) == 1)
+        {
+            puts("HNAYAZEBBI");
+            display_errors2(808);
+        }
+        dmt.j++;
+    }
     // printf("[%s]\n", elmt.no_path);
     // printf("[%s]\n", elmt.so_path);
     // printf("[%s]\n", elmt.we_path);

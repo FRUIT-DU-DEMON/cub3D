@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/12 17:54:38 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/12 23:18:16 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,7 @@ void	check_map_wall(char **virtual_map, t_dimention dmt)
 		}
 		dmt.i++;
 	}
+
+	//empty 
 
 }
