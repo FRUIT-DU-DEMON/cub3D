@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/13 04:49:28 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 05:21:27 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char		**create_virtual_map(char **map_code);
 void	set_element_data(char *texture_path, t_elements *elmt, char identifier);
 void	pointer_plus_index(t_elements *elmt, t_dimention *dmt, int space_index);
 t_dimention    check_map_elements(char **map_code, char *mc_1d);
-void parsing(char **map_code, char **virtual_map);
+void parsing(char **map_code, char **virtual_map, char *mc_1d);
 void		display_errors(int signal);
 void		display_errors2(int signal);
 void	display_errors3(int signal);

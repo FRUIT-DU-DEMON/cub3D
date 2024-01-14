@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 05:10:26 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 06:40:48 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,68 @@ void check_textures_path(t_elements *elmt)
 			display_errors3(-202);
 }
 
+void check_empty_lines(char *mc_1d, int skip_elements)
+{
+	t_dimention dmt;
+	int new_lines;
+
+	dmt.j = 0;
+	dmt.flag = 0;
+	new_lines = 0;
+	while(mc_1d[dmt.j])
+	{
+		if ((mc_1d[dmt.j] == 'N' && mc_1d[dmt.j + 1] == 'O')
+		|| (mc_1d[dmt.j] == 'S' && mc_1d[dmt.j + 1] == 'O')
+		|| (mc_1d[dmt.j] == 'W' && mc_1d[dmt.j + 1] == 'E')
+		|| (mc_1d[dmt.j] == 'E' && mc_1d[dmt.j + 1] == 'A')
+		|| (mc_1d[dmt.j] == 'F' && mc_1d[dmt.j + 1] == ' ')
+		|| (mc_1d[dmt.j] == 'C' && mc_1d[dmt.j + 1] == ' '))
+			dmt.flag++;
+		if (mc_1d[dmt.j] == '\n' && mc_1d[dmt.j + 1] == '\n')
+			new_lines++;
+		if (dmt.flag == 6)
+			break;
+		dmt.j++;
+	}
+	dmt.j = skip_elements + new_lines;
+	while(mc_1d[dmt.j] == '\n')
+		dmt.j++;
+	// printf("%c\n", mc_1d[dmt.j]);
+	// printf("%d\n", new_lines);
+	while(mc_1d[dmt.j])
+	{
+		if (mc_1d[dmt.j] == '\n' && mc_1d[dmt.j + 1] == '\n')
+			display_errors2(808);
+		dmt.j++;
+	}
+}
+
+void check_rgb_colors(char *rgb_colors)
+{
+	t_dimention dmt;
+
+	dmt.j = 0;
+	dmt.flag = 0;
+	while(rgb_colors[dmt.j])
+	{
+		if (rgb_colors[dmt.j] != ' ' && rgb_colors[dmt.j] != ','
+			&& ft_isdigit(rgb_colors[dmt.j]) == 0)
+				display_errors3(-404);
+		if (rgb_colors[dmt.j] == ',')
+			dmt.flag++;
+		dmt.j++;
+	}
+	if (dmt.flag != 2)
+		display_errors3(-404);
+	
+}
+
 t_dimention  check_map_elements(char **map_code, char *mc_1d)
 {
 	t_dimention dmt;
 	t_elements elmt;
 	char identifier;
 	int skip_elements;
-	int new_lines;
 
 	elmt.no_path = NULL;
 	elmt.so_path = NULL;
@@ -105,7 +160,6 @@ t_dimention  check_map_elements(char **map_code, char *mc_1d)
 	elmt.tmp = NULL;
 	dmt.i = 0;
 	skip_elements = 0;
-	new_lines = 0;
 	while (map_code[dmt.i])
 	{
 		elmt.tmp = map_code[dmt.i];
@@ -140,40 +194,16 @@ t_dimention  check_map_elements(char **map_code, char *mc_1d)
 	if (check_pointer_state(&elmt) == -1)
 		display_errors2(-101);
 	check_textures_path(&elmt);
-	dmt.j = 0;
-	dmt.flag = 0;
-	while(mc_1d[dmt.j])
-	{
-		if ((mc_1d[dmt.j] == 'N' && mc_1d[dmt.j + 1] == 'O')
-		|| (mc_1d[dmt.j] == 'S' && mc_1d[dmt.j + 1] == 'O')
-		|| (mc_1d[dmt.j] == 'W' && mc_1d[dmt.j + 1] == 'E')
-		|| (mc_1d[dmt.j] == 'E' && mc_1d[dmt.j + 1] == 'A')
-		|| (mc_1d[dmt.j] == 'F' && mc_1d[dmt.j + 1] == ' ')
-		|| (mc_1d[dmt.j] == 'C' && mc_1d[dmt.j + 1] == ' '))
-			dmt.flag++;
-		if (mc_1d[dmt.j] == '\n' && mc_1d[dmt.j + 1] == '\n')
-			new_lines++;
-		if (dmt.flag == 6)
-			break;
-		dmt.j++;
-	}
-	dmt.j = skip_elements + new_lines;
-	while(mc_1d[dmt.j] == '\n')
-		dmt.j++;
-	// printf("%c\n", mc_1d[dmt.j]);
-	// printf("%d\n", new_lines);
-	while(mc_1d[dmt.j])
-	{
-		if (mc_1d[dmt.j] == '\n' && mc_1d[dmt.j + 1] == '\n')
-			display_errors2(808);
-		dmt.j++;
-	}
+	check_empty_lines(mc_1d, skip_elements);
+	check_rgb_colors(elmt.floor_color);
+	check_rgb_colors(elmt.ceiling_color);
 
-	printf("[%s]\n", elmt.no_path);
-	printf("[%s]\n", elmt.so_path);
-	printf("[%s]\n", elmt.we_path);
-	printf("[%s]\n", elmt.ea_path);
-	printf("[%s]\n", elmt.floor_color);
-	printf("[%s]\n", elmt.ceiling_color);
+
+	// printf("[%s]\n", elmt.no_path);
+	// printf("[%s]\n", elmt.so_path);
+	// printf("[%s]\n", elmt.we_path);
+	// printf("[%s]\n", elmt.ea_path);
+	// printf("[%s]\n", elmt.floor_color);
+	// printf("[%s]\n", elmt.ceiling_color);
 	return(dmt);
 }

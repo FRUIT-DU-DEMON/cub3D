@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:24:48 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 05:11:33 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 05:36:33 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char get_start_point(char **map_code)
 		}
 		i++;
 	}
+	display_errors3(-303);
 	return (0);
 }
 

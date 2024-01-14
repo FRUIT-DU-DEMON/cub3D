@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 03:33:02 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 06:40:41 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	display_errors2(int signal)
 {
 	if (signal == 606)
 	{
-		printf("Error\nmap countains more than one start position!\n");
+		printf("Error\nmap must countain one single start point!\n");
 		exit(EXIT_FAILURE);
 	}
 	if (signal == 707)
@@ -65,7 +65,7 @@ void	display_errors2(int signal)
 	}
 	if (signal == -101)
 	{
-		printf("Error\nmap must countain 6 valid elements at the top of .cub file !\n");
+		printf("Error\n.cub file must countain 6 valid elements at the top!\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -73,12 +73,17 @@ void	display_errors3(int signal)
 {
 	if (signal == -202)
 	{
-		printf("Error\ninvalid elemnts!\n");
+		printf("Error\nelements must provide data!\n");
 		exit(EXIT_FAILURE);
 	}
-	if (signal == 479)
+	if (signal == -303)
 	{
-		printf("Error\nmap elements must be the first in .cub file!\n");
+		printf("Error\nstart point must be surrounded by walls!\n");
+		exit(EXIT_FAILURE);
+	}
+	if (signal == -404)
+	{
+		printf("Error\nfloor and ceiling RGB colors must be in this form : [0,255],[0,255],[0,255]!\n");
 		exit(EXIT_FAILURE);
 	}
 	// if (signal == 666)
