@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:36:06 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 00:52:27 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 08:11:30 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,22 @@ void	check_map_extension(char **av)
 }
 
 
-void	check_map_characters(char **map_code, t_dimention dmt)
+void	check_map_characters(char **map_content, t_dimention dmt)
 {
 	
 	dmt.flag = 0;
-	while (map_code[dmt.i])
+	while (map_content[dmt.i])
 	{
 		dmt.j = 0;
-		while (map_code[dmt.i][dmt.j])
+		while (map_content[dmt.i][dmt.j])
 		{
-			if (map_code[dmt.i][dmt.j] != '0' && map_code[dmt.i][dmt.j] != '1'
-				&& map_code[dmt.i][dmt.j] != 'N' && map_code[dmt.i][dmt.j] != 'S'
-				&& map_code[dmt.i][dmt.j] != 'E' && map_code[dmt.i][dmt.j] != 'W'
-				&& map_code[dmt.i][dmt.j] != ' ')
+			if (map_content[dmt.i][dmt.j] != '0' && map_content[dmt.i][dmt.j] != '1'
+				&& map_content[dmt.i][dmt.j] != 'N' && map_content[dmt.i][dmt.j] != 'S'
+				&& map_content[dmt.i][dmt.j] != 'E' && map_content[dmt.i][dmt.j] != 'W'
+				&& map_content[dmt.i][dmt.j] != ' ')
 					display_errors(505);
-			if (map_code[dmt.i][dmt.j] =='N' || map_code[dmt.i][dmt.j] =='S'
-				|| map_code[dmt.i][dmt.j] =='E' || map_code[dmt.i][dmt.j] =='W')
+			if (map_content[dmt.i][dmt.j] =='N' || map_content[dmt.i][dmt.j] =='S'
+				|| map_content[dmt.i][dmt.j] =='E' || map_content[dmt.i][dmt.j] =='W')
 					dmt.flag++;
 			dmt.j++;
 		}
@@ -54,12 +54,12 @@ void	check_map_characters(char **map_code, t_dimention dmt)
 
 
 
-char	**create_virtual_map(char **map_code)
+char	**create_virtual_map(char **map_content)
 {
 	t_dimention dmt;
 	char **virtual_map;
 	
-	dmt = get_mc_dimentios(map_code);
+	dmt = get_mc_dimentios(map_content);
 	dmt.i = 0;
 	virtual_map = malloc((dmt.lines + 1) * sizeof(char *));
 	virtual_map[dmt.lines] = NULL;
@@ -69,12 +69,12 @@ char	**create_virtual_map(char **map_code)
 		virtual_map[dmt.lines] = malloc((dmt.longest_line + 1) * sizeof(char));
 		dmt.lines--;
 	}
-	while (map_code[dmt.i])
+	while (map_content[dmt.i])
 	{
 		dmt.j = 0;
-		while (map_code[dmt.i][dmt.j])
+		while (map_content[dmt.i][dmt.j])
 		{
-			virtual_map[dmt.i][dmt.j] = map_code[dmt.i][dmt.j];
+			virtual_map[dmt.i][dmt.j] = map_content[dmt.i][dmt.j];
 			dmt.j++;
 		}
 		virtual_map[dmt.i][dmt.longest_line] = '\0';

@@ -6,13 +6,13 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:24:48 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 05:36:33 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 08:11:30 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"parsing.h"
 
-char	*join_map_code(int fd)
+char	*join_map_content(int fd)
 {
 	char	*mc_1d;
 	char	buf[2];
@@ -38,24 +38,24 @@ char	*join_map_code(int fd)
 }
 
 
-char get_start_point(char **map_code)
+char get_start_point(char **map_content)
 {
 	int	i;
 	int	j;
 	char start_point;
 
 	i = 0;
-	while (map_code[i])
+	while (map_content[i])
 	{
 		j = 0;
-		while (map_code[i][j])
+		while (map_content[i][j])
 		{
-			if ((map_code[i][j] == 'N' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))
-				|| (map_code[i][j] == 'S' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))
-				|| (map_code[i][j] == 'W' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))
-				|| (map_code[i][j] == 'E' && (map_code[i][j + 1] == '0' || map_code[i][j + 1] == '1'))) 
+			if ((map_content[i][j] == 'N' && (map_content[i][j + 1] == '0' || map_content[i][j + 1] == '1'))
+				|| (map_content[i][j] == 'S' && (map_content[i][j + 1] == '0' || map_content[i][j + 1] == '1'))
+				|| (map_content[i][j] == 'W' && (map_content[i][j + 1] == '0' || map_content[i][j + 1] == '1'))
+				|| (map_content[i][j] == 'E' && (map_content[i][j + 1] == '0' || map_content[i][j + 1] == '1'))) 
 			{
-				start_point = map_code[i][j]; 
+				start_point = map_content[i][j]; 
 				return (start_point);
 			}
 			j++;
@@ -66,16 +66,16 @@ char get_start_point(char **map_code)
 	return (0);
 }
 
-t_dimention	get_mc_dimentios(char **map_code)
+t_dimention	get_mc_dimentios(char **map_content)
 {
 	t_dimention dmt;
 
 	dmt.i = 0;
 	dmt.longest_line = 0;
-	while (map_code[dmt.i])
+	while (map_content[dmt.i])
 	{
 		dmt.j = 0;
-		while (map_code[dmt.i][dmt.j])
+		while (map_content[dmt.i][dmt.j])
 			dmt.j++;
 		if (dmt.j > dmt.longest_line)
 			dmt.longest_line = dmt.j;

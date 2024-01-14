@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 06:40:48 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 09:24:13 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ int check_pointer_state(t_elements *elmt)
 	
 }
 
-int check_for_each_element(char *map_code, t_dimention *dmt)
+int check_for_each_element(char *map_content, t_dimention *dmt)
 {
-	 if ((map_code[dmt->j] == 'N' && map_code[dmt->j + 1] == 'O')
-		|| (map_code[dmt->j] == 'S' && map_code[dmt->j + 1] == 'O')
-		|| (map_code[dmt->j] == 'W' && map_code[dmt->j + 1] == 'E')
-		|| (map_code[dmt->j] == 'E' && map_code[dmt->j + 1] == 'A')
-		|| (map_code[dmt->j] == 'F' && map_code[dmt->j + 1] == ' ')
-		|| (map_code[dmt->j] == 'C' && map_code[dmt->j + 1] == ' '))
+	 if ((map_content[dmt->j] == 'N' && map_content[dmt->j + 1] == 'O')
+		|| (map_content[dmt->j] == 'S' && map_content[dmt->j + 1] == 'O')
+		|| (map_content[dmt->j] == 'W' && map_content[dmt->j + 1] == 'E')
+		|| (map_content[dmt->j] == 'E' && map_content[dmt->j + 1] == 'A')
+		|| (map_content[dmt->j] == 'F' && map_content[dmt->j + 1] == ' ')
+		|| (map_content[dmt->j] == 'C' && map_content[dmt->j + 1] == ' '))
 			return (0);
 	else
 		return(1);
@@ -126,8 +126,10 @@ void check_empty_lines(char *mc_1d, int skip_elements)
 void check_rgb_colors(char *rgb_colors)
 {
 	t_dimention dmt;
+	f_c_colors fcc;
 
 	dmt.j = 0;
+	dmt.i = 0;
 	dmt.flag = 0;
 	while(rgb_colors[dmt.j])
 	{
@@ -140,10 +142,39 @@ void check_rgb_colors(char *rgb_colors)
 	}
 	if (dmt.flag != 2)
 		display_errors3(-404);
-	
+	fcc.floor_ceiling_rgb = ft_split_prs(rgb_colors, ',');
+	dmt.i = 0;
+	while (fcc.floor_ceiling_rgb[dmt.i])
+	{
+		dmt.j = 0;
+		while (fcc.floor_ceiling_rgb[dmt.i][dmt.j] && fcc.floor_ceiling_rgb[dmt.i][dmt.j] == ' ')
+			dmt.j++;
+		while (fcc.floor_ceiling_rgb[dmt.i][dmt.j] && ft_isdigit(fcc.floor_ceiling_rgb[dmt.i][dmt.j]) == 1)
+			dmt.j++;
+		if (fcc.floor_ceiling_rgb[dmt.i][dmt.j] && fcc.floor_ceiling_rgb[dmt.i][dmt.j] == ' ')
+		{
+			while (fcc.floor_ceiling_rgb[dmt.i][dmt.j] && fcc.floor_ceiling_rgb[dmt.i][dmt.j] == ' ')
+				dmt.j++;
+			if (fcc.floor_ceiling_rgb[dmt.i][dmt.j] != '\0')
+				display_errors3(-404);
+		}
+		dmt.i++;
+	}
+	dmt.i = 0;
+	dmt.j = 0;
+	while (fcc.floor_ceiling_rgb[dmt.j])
+	{
+		if (!(ft_atoi_prs(fcc.floor_ceiling_rgb[dmt.j]) >= 0 && ft_atoi_prs(fcc.floor_ceiling_rgb[dmt.j]) <= 255))
+				display_errors3(-404);
+		else
+			fcc.rgb_range[dmt.i++] = ft_atoi_prs(fcc.floor_ceiling_rgb[dmt.j]);
+		dmt.j++;
+	}
+	if (dmt.j != 3)
+		display_errors3(-404);
 }
 
-t_dimention  check_map_elements(char **map_code, char *mc_1d)
+t_dimention  check_map_elements(char **map_content, char *mc_1d)
 {
 	t_dimention dmt;
 	t_elements elmt;
@@ -156,14 +187,14 @@ t_dimention  check_map_elements(char **map_code, char *mc_1d)
 	elmt.ea_path = NULL;
 	elmt.floor_color = NULL;
 	elmt.ceiling_color = NULL;
-	dmt = get_mc_dimentios(map_code);
+	dmt = get_mc_dimentios(map_content);
 	elmt.tmp = NULL;
 	dmt.i = 0;
 	skip_elements = 0;
-	while (map_code[dmt.i])
+	while (map_content[dmt.i])
 	{
-		elmt.tmp = map_code[dmt.i];
-		skip_elements += ft_strlen_prs(map_code[dmt.i]) + 1;
+		elmt.tmp = map_content[dmt.i];
+		skip_elements += ft_strlen_prs(map_content[dmt.i]) + 1;
 		dmt.j = 0;
 		while (elmt.tmp[dmt.j] == ' ')
 			dmt.j++;

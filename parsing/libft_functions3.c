@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 04:41:10 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/13 04:42:02 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 08:19:15 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi_prs(const char *str)
 {
 	int		i;
 	long	nb;
