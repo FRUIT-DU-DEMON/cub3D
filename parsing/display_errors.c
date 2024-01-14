@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:24:45 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/13 03:58:45 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/14 03:33:02 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,31 +60,31 @@ void	display_errors2(int signal)
 	}
 	if (signal == 909)
 	{
-		printf("Error\nmap countains more than one path or color of each element!\n");
+		printf("Error\nmap countains duplicated elements element!\n");
 		exit(EXIT_FAILURE);
 	}
-	if (signal == 1101)
+	if (signal == -101)
 	{
-		printf("Error\ninvalid elemnts!\n");
+		printf("Error\nmap must countain 6 valid elements at the top of .cub file !\n");
 		exit(EXIT_FAILURE);
 	}
 }
 void	display_errors3(int signal)
 {
+	if (signal == -202)
+	{
+		printf("Error\ninvalid elemnts!\n");
+		exit(EXIT_FAILURE);
+	}
 	if (signal == 479)
 	{
 		printf("Error\nmap elements must be the first in .cub file!\n");
 		exit(EXIT_FAILURE);
 	}
-	if (signal == 777)
-	{
-		printf("Error\none of the elements is missing!\n");
-		exit(EXIT_FAILURE);
-	}
-	if (signal == 666)
-	{
-		printf("Error\nfloor and ceiling colors range must be in this form : [0,255],[0,255],[0,255]!\n");
-		exit(EXIT_FAILURE);
-	}
+	// if (signal == 666)
+	// {
+	// 	printf("Error\nfloor and ceiling colors range must be in this form : [0,255],[0,255],[0,255]!\n");
+	// 	exit(EXIT_FAILURE);
+	// }
 	
 }
