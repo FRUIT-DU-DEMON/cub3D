@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:24:07 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 09:24:13 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/15 04:52:35 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,20 @@ void check_empty_lines(char *mc_1d, int skip_elements)
 	dmt.j = skip_elements + new_lines;
 	while(mc_1d[dmt.j] == '\n')
 		dmt.j++;
-	// printf("%c\n", mc_1d[dmt.j]);
-	// printf("%d\n", new_lines);
 	while(mc_1d[dmt.j])
 	{
 		if (mc_1d[dmt.j] == '\n' && mc_1d[dmt.j + 1] == '\n')
 			display_errors2(808);
 		dmt.j++;
 	}
+}
+
+void lightweight_memory(char **tab2d)
+{
+	int i = 0;
+	while(tab2d[i])
+		free(tab2d[i++]);
+	free(tab2d);
 }
 
 void check_rgb_colors(char *rgb_colors)
@@ -172,6 +178,7 @@ void check_rgb_colors(char *rgb_colors)
 	}
 	if (dmt.j != 3)
 		display_errors3(-404);
+	lightweight_memory(fcc.floor_ceiling_rgb);
 }
 
 t_dimention  check_map_elements(char **map_content, char *mc_1d)

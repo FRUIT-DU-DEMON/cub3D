@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 00:19:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/14 08:25:31 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/15 03:06:53 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void parsing(char **map_content, char **virtual_map, char *mc_1d);
 void		display_errors(int signal);
 void		display_errors2(int signal);
 void	display_errors3(int signal);
+void lightweight_memory(char **tab2d);
 
 ///////// libft //////////
 int		ft_strlen_prs(char *s);
