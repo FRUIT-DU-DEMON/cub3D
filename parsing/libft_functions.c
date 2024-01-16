@@ -6,11 +6,11 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 04:42:27 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/15 02:52:41 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:15:17 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"parsing.h"
+#include "parsing.h"
 
 int	ft_strlen_prs(char *s)
 {

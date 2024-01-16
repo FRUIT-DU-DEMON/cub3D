@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:20:11 by hlabouit          #+#    #+#             */
-/*   Updated: 2024/01/15 03:44:17 by hlabouit         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:41:01 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,22 @@
 // {
 // 	system("leaks parsing");
 // }
+void	lightweight_memory(char **tab2d)
+{
+	int i;
+
+	i = 0;
+	while(tab2d[i])
+		free(tab2d[i++]);
+	free(tab2d);
+}
 
 int main(int ac, char **av)
 {
 	// atexit(l);
 	char **map_content;
 	char *mc_1d;
-	char **map_code;//here's the returned map code
+	char **map_code;
 	char **virtual_map;
 	int fd;
 	t_dimention dmt;
@@ -45,6 +54,9 @@ int main(int ac, char **av)
 
 	virtual_map = create_virtual_map(map_content);
 	dmt = check_map_elements(map_content, mc_1d);
+	// printf("[%s]\n", dmt.fcc.floor_rgb[0]);
+	// printf("[%s]\n", dmt.fcc.ceiling_rgb[0]);
+	// exit(0);
 	free(mc_1d);
 	map_code = malloc((dmt.lines - dmt.i + 1) * sizeof(char *));
 	map_code[dmt.lines - dmt.i] = NULL;
